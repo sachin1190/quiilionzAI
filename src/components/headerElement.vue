@@ -1,10 +1,9 @@
 <template>
   <q-item clickable v-ripple>
     <q-item-section avatar>
-      <q-icon color=colorr name="bluetooth">
+      <q-icon :color="colorr" :name="icon">
       </q-icon>
     </q-item-section>
-
     <q-item-section>{{ title }}</q-item-section>
   </q-item>
 </template>

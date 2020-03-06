@@ -9,7 +9,11 @@ const routes = [
   // }
   {
     path: '/',
-    component: () => import('layouts/questionPage.vue')
+    component: () => import('layouts/questionPage.vue'),
+    children: [
+      { path: '/', component: () => import('pages/enterQuestionPage.vue') },
+      { path: 'questions', component: () => import('pages/generatedQuestionPage.vue') }
+    ]
   }
 ]
 
