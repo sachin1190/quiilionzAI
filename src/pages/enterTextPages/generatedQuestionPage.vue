@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import QuestionCard from 'components/generatedQuestionComponent.vue'
+import QuestionCard from 'components/mainLayoutComponents/generatedQuestionComponent.vue'
 
 export default {
   components: {

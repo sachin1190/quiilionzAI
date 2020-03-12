@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import DropdownItem from 'components/dropDownmain.vue'
+import DropdownItem from 'components/mainLayoutComponents/dropDownmain.vue'
 
 export default {
   components: {

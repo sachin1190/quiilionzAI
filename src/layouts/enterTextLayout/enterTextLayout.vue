@@ -10,13 +10,7 @@
           :icon="elem.icon"
           :bind="elem"
         />
-         <q-expansion-item
-         switch-toggle-side
-         expand-separator
-         icon="perm_identity"
-         label="User"
-         >
-         </q-expansion-item>
+        <UserAccount :username="this.$store.getters['QuestionModule/getUsername']"/>
         <q-item clickable v-ripple @click="toggleDrawer()">
         <q-item-section avatar>
           <q-icon color="black" size="xl" name="chevron_right"></q-icon>
@@ -27,10 +21,12 @@
     <q-drawer v-model="drawerOpen" side="right" bordered>
       <q-list>
       <RightDrawerList
-      v-for="title in rightDrawerList"
-      :key="title"
-      :name="title"
-      :v-bind="title"
+      v-for="t in this.$store.getters['QuestionModule/getRightDrawerList']"
+      :key="t.title"
+      :index="t.index"
+      :name="t.title"
+      :clickable="t.clickable"
+      :v-bind="t.title"
       />
       </q-list>
     <!-- drawer content -->
@@ -45,15 +41,17 @@
 </template>
 
 <script>
-import HeaderElement from 'components/headerElement.vue'
-import RightDrawerList from 'components/rightDrawerList.vue'
-import AddTextFooter from 'components/addQuestionPageFooter.vue'
+import HeaderElement from 'components/mainLayoutComponents/headerElement.vue'
+import RightDrawerList from 'components/mainLayoutComponents/rightDrawerList.vue'
+import AddTextFooter from 'components/mainLayoutComponents/addQuestionPageFooter.vue'
+import UserAccount from 'components/authComponents/userAccount.vue'
 
 export default {
   components: {
     HeaderElement,
     RightDrawerList,
-    AddTextFooter
+    AddTextFooter,
+    UserAccount
   },
   methods: {
     toggleDrawer () {

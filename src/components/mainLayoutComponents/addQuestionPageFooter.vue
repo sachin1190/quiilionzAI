@@ -9,7 +9,7 @@
       <div class="row paddLr">
         <div class="col-md-8 col-xs-12">
           <q-btn
-            @click="fillSample()"
+            @click="showNotif"
             color="orange"
             label="Try Sample Text"
           />
@@ -23,8 +23,15 @@
 </template>
 
 <script>
+
 export default {
   methods: {
+    showNotif () {
+      this.$q.notify({
+        message: 'Jim pinged you.',
+        color: 'purple'
+      })
+    },
     fillSample () {
       this.$store.commit('QuestionModule/setSampleText')
     },

@@ -1,7 +1,7 @@
 <template>
   <q-card class="my-card">
     <q-card-section>
-         <q-checkbox size="xl" @input="changeVal" v-model="isSelected" />
+         <q-checkbox size="xl" v-model="isSelected" />
          <div class="text-h6">{{ question }}</div>
     </q-card-section>
     <q-separator />
@@ -36,13 +36,23 @@ export default {
       type: Boolean
     }
   },
-  methods: {
-    changeVal (value) {
-      console.log('value passed now is')
-      console.log(value)
-      this.$store.commit('QuestionModule/chooseQuestions', this.question, value)
+  computed: {
+    selectionStatus: {
+      set (value) {
+        this.$store.commit('QuestionModule/chooseQuestions', this.question, value)
+      },
+      get () {
+        return this.$store.getters['QuestionModule/getSelectionStatus'](this.question)
+      }
     }
   }
+  // methods: {
+  //   changeVal (value) {
+  //     console.log('value passed now is')
+  //     console.log(value)
+  //     this.$store.commit('QuestionModule/chooseQuestions', this.question, value)
+  //   }
+  // }
   // data () {
   //   return {
   //     checkVal: false

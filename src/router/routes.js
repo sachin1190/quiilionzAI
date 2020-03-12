@@ -9,20 +9,34 @@ const routes = [
   // }
   {
     path: '/',
-    component: () => import('layouts/questionPage.vue'),
+    component: () => import('layouts/enterTextLayout/enterTextLayout'),
     children: [
-      { path: '/', component: () => import('pages/enterQuestionPage.vue') },
-      { path: 'questions', component: () => import('pages/generatedQuestionPage.vue') }
+      { path: '/', component: () => import('pages/enterTextPages/enterTextPage.vue') },
+      { path: 'questions', component: () => import('pages/enterTextPages/generatedQuestionPage.vue') }
+    ]
+  },
+  {
+    path: '/signup',
+    component: () => import('layouts/authLayout/signUpLayout.vue'),
+    children: [
+      { path: 'signup', component: () => import('layouts/authLayout/signUpLayout.vue') }
+    ]
+  },
+  {
+    path: '/login',
+    component: () => import('layouts/authLayout/loginLayout.vue'),
+    children: [
+      { path: 'login', component: () => import('layouts/authLayout/loginLayout.vue') }
     ]
   }
 ]
 
 // Always leave this as last one
-if (process.env.MODE !== 'ssr') {
-  routes.push({
-    path: '*',
-    component: () => import('pages/Error404.vue')
-  })
-}
+// if (process.env.MODE !== 'ssr') {
+//   routes.push({
+//     path: '*',
+//     component: () => import('pages/Error404.vue')
+//   })
+// }
 
 export default routes

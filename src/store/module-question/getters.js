@@ -14,9 +14,13 @@ export function getMaxWordCount (state) {
 export function getWordCount (state) {
   return state.text.length
 }
+export function getRightDrawerList (state) {
+  return state.rightDrawerList
+}
 export function getSelectionStatus (state, question) {
   var i = state.questions.find(function (element) {
     return element === question
   })
   console.log('return the element at position i')
+  console.log(i)
 }

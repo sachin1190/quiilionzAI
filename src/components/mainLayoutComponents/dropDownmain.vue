@@ -1,7 +1,7 @@
 <template>
-  <q-item clickable v-close-popup @click="onItemClick">
+  <q-item clickable v-close-popup>
     <q-item-section>
-      <q-item-label>{{ name }}</q-item-label>
+      <q-item-label @click="clickFunc">{{ name }}</q-item-label>
     </q-item-section>
   </q-item>
 </template>
@@ -13,6 +13,9 @@ export default {
     name: {
       type: String,
       required: true
+    },
+    clickFunc: {
+      type: Function
     }
   }
 }
