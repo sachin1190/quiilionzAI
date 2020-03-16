@@ -1,8 +1,8 @@
 <template>
   <q-card class="my-card">
     <q-card-section>
-         <q-checkbox size="xl" v-model="isSelected" />
-         <div class="text-h6">{{ question }}</div>
+      <q-checkbox size="xl" @input="changeVal" :value="isSelected" />
+      <div class="text-h6">{{ question }}</div>
     </q-card-section>
     <q-separator />
     <q-card-actions vertical>
@@ -36,27 +36,29 @@ export default {
       type: Boolean
     }
   },
-  computed: {
-    selectionStatus: {
-      set (value) {
-        this.$store.commit('QuestionModule/chooseQuestions', this.question, value)
-      },
-      get () {
-        return this.$store.getters['QuestionModule/getSelectionStatus'](this.question)
-      }
+  // computed: {
+  //   selectionStatus: {
+  //     set (value) {
+  //       this.$store.commit(
+  //         'QuestionModule/chooseQuestions',
+  //         this.question,
+  //         value
+  //       )
+  //     },
+  //     get () {
+  //       return null
+  //       // console.log(`status is ${this.$store.dispatch('QuestionModule/getSelectionStatus', this.question)}`)
+  //       // return this.$store.dispatch('QuestionModule/getSelectionStatus', this.question)
+  //     }
+  //   }
+  // }
+  methods: {
+    test (value) {
+      console.log('testing')
+    },
+    changeVal (value) {
+      this.$store.commit('QuestionModule/chooseQuestions', { question: this.question, value: value })
     }
   }
-  // methods: {
-  //   changeVal (value) {
-  //     console.log('value passed now is')
-  //     console.log(value)
-  //     this.$store.commit('QuestionModule/chooseQuestions', this.question, value)
-  //   }
-  // }
-  // data () {
-  //   return {
-  //     checkVal: false
-  //   }
-  // }
 }
 </script>

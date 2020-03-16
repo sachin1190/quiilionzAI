@@ -1,19 +1,18 @@
 <template>
   <div>
-    <div class="row padd">
+    <div class="row paddOptions">
       <div class="col-xs-12 col-sm-6 col-md-6">
         <q-input borderless hide-bottom-space placeholder="Enter Text" />
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3">
         <q-toggle
           size="lg"
-          value="['abc', 'cde']"
-          val="lg"
+          :value="true"
           label="Express Mode"
         />
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3">
-        <q-btn-dropdown color="primary" label="Dropdown Button">
+        <q-btn-dropdown color="primary" label="Choose Subject">
           <q-list>
             <DropdownItem
               v-for="title in dropDowntitles"
@@ -25,7 +24,7 @@
         </q-btn-dropdown>
       </div>
     </div>
-    <div class="row paddLr">
+    <div class="row padd">
       <div class="col-12">
         <q-input
           placeholder="Enter text"
@@ -82,3 +81,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.padd {
+  padding-left: 3%
+}
+.paddOptions {
+  padding: 3% 3%
+}
+</style>

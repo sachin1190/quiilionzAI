@@ -2,7 +2,7 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated container style="height:100px">
       <q-toolbar>
-        <q-toolbar-title class="padd">Quillionz</q-toolbar-title>
+        <q-toolbar-title class="padd"><q-item :clickable="true" @click="goToHome">Quillionz</q-item></q-toolbar-title>
            <HeaderElement
           v-for="elem in headerElements"
           :key="elem.title"
@@ -24,6 +24,7 @@
       v-for="t in this.$store.getters['QuestionModule/getRightDrawerList']"
       :key="t.title"
       :index="t.index"
+      :active="t.active"
       :name="t.title"
       :clickable="t.clickable"
       :v-bind="t.title"
@@ -56,12 +57,14 @@ export default {
   methods: {
     toggleDrawer () {
       this.drawerOpen ? this.drawerOpen = false : this.drawerOpen = true
+    },
+    goToHome () {
+      this.$router.push('/')
     }
   },
   data () {
     return {
       drawerOpen: true,
-      rightDrawerList: ['Submit Content', 'Choose Questions', 'Review', 'Get Question Ideas'],
       headerElements: [
         {
           title: 'Invite A Friend',

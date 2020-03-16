@@ -1,6 +1,17 @@
+import { LocalStorage } from 'quasar'
 
 export function getQestions (state) {
   return state.questions
+}
+export function getSelectedQestions (state) {
+  var selList = []
+  state.questions.find(function (e) {
+    if (e.isSelected === true) {
+      selList.push(e)
+      console.log(`pushing question ${e.question}`)
+    }
+  })
+  return selList
 }
 export function getText (state) {
   return state.text
@@ -17,10 +28,10 @@ export function getWordCount (state) {
 export function getRightDrawerList (state) {
   return state.rightDrawerList
 }
-export function getSelectionStatus (state, question) {
-  var i = state.questions.find(function (element) {
-    return element === question
-  })
-  console.log('return the element at position i')
-  console.log(i)
+export function getTextHistory () {
+  if (LocalStorage.getItem('textHistory') === null) {
+    return null
+  } else {
+    return LocalStorage.getItem('textHistory')
+  }
 }

@@ -1,6 +1,6 @@
 
 export function addQuestions (state, payload) {
-  state.questions = payload
+  state.questions = payload.data
 }
 export function addText (state, payload) {
   state.text = payload
@@ -15,13 +15,18 @@ export function clearText (state) {
   state.text = ''
   state.wordCount = 0
 }
-export function chooseQuestions (state, question, value) {
-  var i = state.questions.find(function (element) {
-    return element === question
+export function activateRightDrawerOptions (state, index) {
+  state.rightDrawerList.find(function (element) {
+    if (element.index === index) {
+      element.clickable = true
+      element.active = true
+    }
   })
-
-  console.log('deselect element at')
-  console.log(i)
-  console.log('set the value of element at position i')
-  // state.questions.elementAt(i).isSelected = value
+}
+export function chooseQuestions (state, data) {
+  state.questions.find(function (element) {
+    if (element.question === data.question) {
+      element.isSelected = data.value
+    }
+  })
 }

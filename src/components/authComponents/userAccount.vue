@@ -83,9 +83,9 @@ export default {
       ],
       optionsLoggedIn: [
         {
-          name: 'Account',
+          name: 'History',
           func: () => {
-            console.log('Account Optins')
+            this.$store.dispatch('QuestionModule/getTextHistory')
           }
         },
         {

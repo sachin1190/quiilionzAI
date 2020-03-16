@@ -12,7 +12,8 @@ const routes = [
     component: () => import('layouts/enterTextLayout/enterTextLayout'),
     children: [
       { path: '/', component: () => import('pages/enterTextPages/enterTextPage.vue') },
-      { path: 'questions', component: () => import('pages/enterTextPages/generatedQuestionPage.vue') }
+      { path: 'questions', component: () => import('pages/enterTextPages/generatedQuestionPage.vue') },
+      { path: 'questions/review', component: () => import('pages/enterTextPages/reviewQuestionsPage.vue') }
     ]
   },
   {
@@ -27,6 +28,13 @@ const routes = [
     component: () => import('layouts/authLayout/loginLayout.vue'),
     children: [
       { path: 'login', component: () => import('layouts/authLayout/loginLayout.vue') }
+    ]
+  },
+  {
+    path: '/history',
+    component: () => import('layouts/authLayout/userTextHistory.vue'),
+    children: [
+      { path: 'login', component: () => import('layouts/authLayout/userTextHistory.vue') }
     ]
   }
 ]
